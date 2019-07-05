@@ -33,6 +33,7 @@
       </div>
     </form>
     <button @click="resetForm()">Reset form</button>
+    <button v-if="editable" @click="editPost(newPost)">Edit post</button>
   </div>
 </template>
 
@@ -41,7 +42,8 @@ import { postsService } from "../services/posts";
 export default {
   data() {
     return {
-      newPost: {}
+      newPost: {},
+      editable: false
     };
   },
 
@@ -60,6 +62,31 @@ export default {
 
     resetForm() {
       this.newPost = {};
+    },
+
+    editPost(newPost) {
+      postsService
+        .edit(newPost.id, newPost)
+        .then(() => {
+          this.newPost = {};
+          return this.$router.push("/posts");
+        })
+        .catch(e => {
+          alert(e);
+        });
+    }
+  },
+  mounted() {
+    if (this.$route.params.id) {
+      this.editable = true;
+      postsService
+        .get(this.$route.params.id)
+        .then(response => {
+          this.newPost = response.data;
+        })
+        .catch(e => {
+          alert(e);
+        });
     }
   }
 };

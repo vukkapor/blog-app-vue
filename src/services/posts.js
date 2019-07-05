@@ -14,7 +14,16 @@ export default class PostsService {
     }
 
     add(newPost) {
+        newPost.id = null;
         return axios.post('posts', newPost)
+    }
+
+    edit(id, post) {
+        return axios.put('posts/' + id, post)
+    }
+
+    delete(id) {
+        return axios.delete('posts/' + id)
     }
 }
 
