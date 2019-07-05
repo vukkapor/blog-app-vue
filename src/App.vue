@@ -5,6 +5,9 @@
         <li class="nav-item active">
           <router-link to="/posts">Posts</router-link>
         </li>
+        <li>
+          <router-link to="/add">Add a post</router-link>
+        </li>
       </ul>
     </nav>
     <router-view/>
