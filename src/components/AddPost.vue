@@ -5,7 +5,15 @@
       <div>
         <label for="title">Title</label>
         <br>
-        <input type="text" name="title" id="title" v-model="newPost.title" style="width:60%">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          v-model="newPost.title"
+          style="width:60%"
+          required
+          minlength="2"
+        >
       </div>
       <div>
         <label for="text">Text</label>
@@ -16,6 +24,8 @@
           id="text"
           v-model="newPost.text"
           style="width:60%; height: 400px"
+          required
+          maxlength="300"
         ></textarea>
       </div>
       <div>
