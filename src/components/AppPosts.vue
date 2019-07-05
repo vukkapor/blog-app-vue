@@ -2,6 +2,7 @@
   <div style="text-align: center">
     <div v-for="post in posts" :key="post.id">
       <h1>{{post.title}}</h1>
+      <p>{{commentCount(post)}} comments on this post</p>
       <button @click="viewPost(post.id)">View post</button>
       <button @click="editPost(post.id)">Edit post</button>
       <button @click="deletePost(post.id)">Delete post</button>
@@ -14,7 +15,8 @@ import { postsService } from "../services/posts";
 export default {
   data() {
     return {
-      posts: []
+      posts: [],
+      counter: 0
     };
   },
 
@@ -44,6 +46,11 @@ export default {
         .catch(e => {
           alert(e);
         });
+    },
+
+    commentCount(post) {
+      this.counter = 0;
+      return (this.counter = post.comments.length);
     }
   }
 };

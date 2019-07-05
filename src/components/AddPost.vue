@@ -52,7 +52,6 @@ export default {
       postsService
         .add(newPost)
         .then(() => {
-          this.newPost = {};
           this.$router.push("/posts");
         })
         .catch(e => {
@@ -68,7 +67,6 @@ export default {
       postsService
         .edit(newPost.id, newPost)
         .then(() => {
-          this.newPost = {};
           return this.$router.push("/posts");
         })
         .catch(e => {
