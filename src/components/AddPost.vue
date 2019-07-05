@@ -22,6 +22,7 @@
         <button type="submit">Add a new post</button>
       </div>
     </form>
+    <button @click="resetForm()">Reset form</button>
   </div>
 </template>
 
@@ -45,6 +46,10 @@ export default {
         .catch(e => {
           alert(e);
         });
+    },
+
+    resetForm() {
+      this.newPost = {};
     }
   }
 };
