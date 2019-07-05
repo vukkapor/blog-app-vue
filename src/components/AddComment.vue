@@ -24,6 +24,8 @@ export default {
         .addComment(comment, this.$route.params.id)
         .then(() => {
           this.$router.push("/post/" + this.$route.params.id);
+          this.comment = {};
+          this.$router.go();
         })
         .catch(e => {
           alert(e);

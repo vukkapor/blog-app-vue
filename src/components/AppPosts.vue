@@ -2,6 +2,9 @@
   <div style="text-align: center">
     <div v-for="post in posts" :key="post.id">
       <h1>{{post.title}}</h1>
+      {{formatDate(post.createdAt)}}
+      <br>
+      {{diffForHumans(post.createdAt)}}
       <p>{{commentCount(post)}} comments on this post</p>
       <button @click="viewPost(post.id)">View post</button>
       <button @click="editPost(post.id)">Edit post</button>
@@ -12,7 +15,10 @@
 
 <script>
 import { postsService } from "../services/posts";
+import { dateMixin } from "../mixins/DateMixins";
 export default {
+  mixins: [dateMixin],
+
   data() {
     return {
       posts: [],

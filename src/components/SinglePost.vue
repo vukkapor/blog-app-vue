@@ -2,6 +2,9 @@
   <div>
     <div style="text-align: center">
       <h1>{{post.title}}</h1>
+      {{formatDate(post.createdAt)}}
+      <br>
+      {{diffForHumans(post.createdAt)}}
       <p>{{post.text}}</p>
       <p>{{counter}} comments on this post</p>
       <h4>Comments:</h4>
@@ -16,7 +19,9 @@
 <script>
 import { postsService } from "../services/posts";
 import AddComment from "../components/AddComment";
+import { dateMixin } from "../mixins/DateMixins";
 export default {
+  mixins: [dateMixin],
   components: {
     AddComment
   },
