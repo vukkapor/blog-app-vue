@@ -2,7 +2,7 @@
   <div style="text-align: center">
     <div v-for="post in posts" :key="post.id">
       <h1>{{post.title}}</h1>
-      <p>{{post.text}}</p>
+      <button @click="viewPost(post.id)">View post</button>
     </div>
   </div>
 </template>
@@ -25,6 +25,11 @@ export default {
       .catch(e => {
         alert(e);
       });
+  },
+  methods: {
+    viewPost(id) {
+      return this.$router.push("/post/" + id);
+    }
   }
 };
 </script>
