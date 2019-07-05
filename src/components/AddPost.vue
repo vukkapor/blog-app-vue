@@ -1,7 +1,7 @@
 <template>
   <div style="width:100%; margin-left: auto;
     margin-right: auto; padding-left: 20px">
-    <form @submit.prevent="AddNewPost(newPost)">
+    <form @submit.prevent="addNewPost(newPost)">
       <div>
         <label for="title">Title</label>
         <br>
@@ -48,7 +48,7 @@ export default {
   },
 
   methods: {
-    AddNewPost(newPost) {
+    addNewPost(newPost) {
       postsService
         .add(newPost)
         .then(() => {

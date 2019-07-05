@@ -10,6 +10,10 @@
       <h4>Comments:</h4>
       <div v-for="comment in post.comments" :key="comment.id">
         <p>{{comment.text}}</p>
+        {{formatDate(comment.createdAt)}}
+        <br>
+        For humans:
+        {{diffForHumans(comment.createdAt)}}
       </div>
     </div>
     <add-comment></add-comment>
